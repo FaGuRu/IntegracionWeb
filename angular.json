@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "IntegracionWeb"
+    }
+  },
+  "defaultProject": "IntegracionWeb",
+  "cli": {
+    "analytics": "c9a38689-f964-4f04-9915-61b888f162c3"
+  }
 }
