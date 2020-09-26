@@ -1,0 +1,20 @@
+.body{
+    text-align: center;
+    margin-top: 7px;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bodyButton{
+    margin-top: 50px; 
+    text-align: center;
+}
+
+.tableCenter{
+    width: 70%;
+    height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    overflow: scroll;
+}

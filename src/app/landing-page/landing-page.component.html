@@ -1,12 +1,32 @@
-<div *ngIf = "products.length === 0">
-    <p>
-        No hay nada
-    </p>
+
+<div class="body">
+    <div class="tableCenter">
+        <table class="table table-striped">
+            
+            <thead><!-- La cabecera principal de la tabla -->
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+              </tr>
+            </thead>
+            
+            <tbody> <!-- Esto es el cuerpo de la tabla -->
+              
+              <tr *ngFor ="let product of products">
+                <th scope="row">
+                    {{product.id}}
+                </th>
+                <td>{{product.name}}</td>
+                <td>{{product.precio}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
-</div>
-<div *ngFor = "let product of products">
-    <p >
-        {{product.id}} / {{product.name}} / {{product.price}}
-    </p>
-</div>
+
+
+
+

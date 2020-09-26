@@ -11,6 +11,8 @@ import { ProductComponent } from './product/product.component';
 import { ProviderComponent } from './provider/provider.component';
 import { SaleComponent } from './sale/sale.component';
 import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AdminComponent } from './admin/admin.component';
     ProductComponent,
     ProviderComponent,
     SaleComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
