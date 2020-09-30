@@ -1,3 +1,57 @@
-<p>login works!</p>
 
-<h1>Este es Login</h1>
+<div class="center">
+    <div>
+       <img src="../../assets/img/loginM.png">
+       <!-- <h2>Login PS</h2> -->
+    </div>
+    <div class="container">
+        <div class="row justify-content-center h-100">
+            <div class="col-sm-8 align-self-center text-center">
+                <div class="card shadow-lg p-3 mb-5 bg-white">
+                    <div class="card-header">Inicio de Sesion</div>
+                    <div class="card-body">
+                        <form action="/landing-page" class="needs-validation" method="GET">
+                            <div class="formulario">
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="">Usuario</label>
+                                        <input type="text" class="form-control" id="" placeholder="Usuario" value="" required>
+                                        <div class="valid-feedback">
+                                            Listo!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Lllene el campo.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="">Password</label>
+                                        <input type="password" class="form-control" id="" placeholder="Password" value="" required>
+                                        <div class="valid-feedback">
+                                            Listo!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Lllene el campo.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-outline-primary">Login</button>
+                            
+                        </form>
+                        <br>
+                        <div>
+                            <button type="button" class="btn btn-outline-success" onclick="loginGoogle()">Login with Google</button>
+                        </div>
+                        <br>
+                        <div>
+                            <a (click)="goRegister()" class="btn btn-outline-primary">Registrarse</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
