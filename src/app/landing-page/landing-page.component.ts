@@ -21,10 +21,10 @@ export class LandingPageComponent implements OnInit {
   constructor(private serviceService: ServiceService) { }
 
   ngOnInit(): void {
-    this.serviceService.getProduct("products/").subscribe((data : any[]) =>{
-      console.log(data);
-      this.products = data;
-    });
+    // this.serviceService.getProduct("products/").subscribe((data : any[]) =>{
+    //   console.log(data);
+    //   this.products = data;
+    // });
   }
   sendService(){
     //this.info = 'Si hay datos'

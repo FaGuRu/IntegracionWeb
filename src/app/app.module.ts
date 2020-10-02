@@ -14,6 +14,10 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
+ import { AngularFireModule } from '@angular/fire';
+ import { AngularFireAuthModule } from '@angular/fire/auth';
+ import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -26,12 +30,16 @@ import { RegisterComponent } from './register/register.component';
     AdminComponent,
     LoginComponent,
     HeaderComponent,
-    RegisterComponent
+    RegisterComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
