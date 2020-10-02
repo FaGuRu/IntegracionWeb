@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
 
   constructor(private router: Router) { }
 
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginGoogle(){
+    console.log('Entra');
     
   }
 

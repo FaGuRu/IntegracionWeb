@@ -2,7 +2,6 @@
 <div class="center">
     <div>
        <img src="../../assets/img/loginM.png">
-       <!-- <h2>Login PS</h2> -->
     </div>
     <div class="container">
         <div class="row justify-content-center h-100">
@@ -10,7 +9,7 @@
                 <div class="card shadow-lg p-3 mb-5 bg-white">
                     <div class="card-header">Inicio de Sesion</div>
                     <div class="card-body">
-                        <form action="/landing-page" class="needs-validation" method="GET">
+                        <form action="" class="needs-validation" method="">
                             <div class="formulario">
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
@@ -36,12 +35,12 @@
                                 </div>
                             </div>
                             
-                            <button type="submit" class="btn btn-outline-primary">Login</button>
+                            <button type="submit" class="btn btn-outline-primary" (click)="goHome()">Login</button>
                             
                         </form>
                         <br>
                         <div>
-                            <button type="button" class="btn btn-outline-success" onclick="loginGoogle()">Login with Google</button>
+                            <button type="button" class="btn btn-outline-success" (click)="loginGoogle()">Login with Google</button>
                         </div>
                         <br>
                         <div>

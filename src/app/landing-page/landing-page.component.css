@@ -18,3 +18,14 @@
     display: block;
     overflow: scroll;
 }
+
+.formulario{
+   
+    transform: translate(23,-1%);
+}
+
+
+.card-header{
+    background: linear-gradient(to right, #2B32B2, #1488CC);
+    color:white;
+    }
