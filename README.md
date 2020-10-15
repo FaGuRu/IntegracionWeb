@@ -29,3 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Proyecto terminado
 Se agrego la implementacion de un login con Google con AngularFire, la pagina de Login,Landing-page y registro funcionan perfectamente.
 
+## Link de Firebase
+https://angular-deploy-4bf58.firebaseapp.com/
