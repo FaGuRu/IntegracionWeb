@@ -17,6 +17,20 @@ import { RegisterComponent } from './register/register.component';
  import { AngularFireModule } from '@angular/fire';
  import { AngularFireAuthModule } from '@angular/fire/auth';
  import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Importaciones para los formularios
+import{ FormsModule, ReactiveFormsModule } from '@angular/forms'
+
+//Importaciones de Angular material
+import { MatSliderModule } from '@angular/material/slider';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -31,6 +45,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     HeaderComponent,
     RegisterComponent,
+    DashboardComponent,
     
   ],
   imports: [
@@ -39,7 +54,18 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-  
+    BrowserAnimationsModule,
+    //Modulos de Formulario
+    FormsModule, 
+    ReactiveFormsModule,
+    //Angular Material
+    MatSliderModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

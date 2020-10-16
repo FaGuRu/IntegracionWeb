@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
- import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
- import * as firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
+import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms'
+import { AuthServiceService } from '../service/auth/auth-service.service'
+
 
 @Component({
   selector: 'app-login',
@@ -9,34 +12,60 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  mandar : boolean = false;
-  pasa : String ='';
-  constructor(private router: Router, private afAuth: AngularFireAuth) { }
+  mandar: boolean = false;
+  pasa: String = '';
+  loginFormGroup: FormGroup;
+
+  constructor(private router: Router, private afAuth: AngularFireAuth, private _formBuilder: FormBuilder, private _authService: AuthServiceService) {
+      if(_authService.isAuthenticated()){
+        router.navigate(['dashboard'])
+      }
+   }
 
   ngOnInit(): void {
+    this.loginFormGroup = this._formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    })
   }
 
-  goHome(){
-    this.router.navigate(['/landing-page'])
-    console.log('conseguido')
+  login(): void {
+    const data = this.loginFormGroup.value;
+
+    if(data.email && data.password){
+      this._authService.login(data.email, data.password).subscribe(access => {
+        localStorage.setItem('user',JSON.stringify(access));
+        console.log("Datos validos");
+        this.router.navigate(['dashboard'])
+        
+      }, error =>{
+        console.log("Datos invalidos");
+        
+      }
+      );
+    }
+    
+    
   }
 
-  goRegister(){
+  goRegister() {
     this.router.navigate(['/register'])
     console.log('conseguido')
   }
 
-  async loginGoogle(){
+  async loginGoogle() {
     var provider = new firebase.auth.GoogleAuthProvider();
     console.log('entra');
-    
+
     firebase.auth().signInWithPopup(provider).then(res => {
       console.log('Successfully logged in!')
-      this.router.navigate(['/landing-page'])
+      this.router.navigate(['dashboard'])
     }).catch(error => {
       console.log(error)
-  });
-    
+    });
+
   }
+
+
 
 }

@@ -5,12 +5,8 @@
     align-items: center;
 }
 
-.login-form{
+.mat-elevation-z8{
     min-width: 150px;
     max-width: 300px;
-    width: 100%;
-}
-
-.example-full-width{
     width: 100%;
 }
