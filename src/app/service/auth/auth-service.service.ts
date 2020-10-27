@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthServiceService {
-  api: String = '';
+  api: String = 'http://localhost:8000/';
   constructor(private _httpClient: HttpClient) { }
 
   isAuthenticated(): boolean {

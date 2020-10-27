@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void{
+    this._router.navigate(['/'])
     localStorage.removeItem('user')
     this._router.navigate(['/'])
   }
