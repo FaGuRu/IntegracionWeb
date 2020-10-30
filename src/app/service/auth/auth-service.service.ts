@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthServiceService {
-  api: String = 'http://localhost:8000/';
+  api: String = 'http://ids-bakend.herokuapp.com/';
   constructor(private _httpClient: HttpClient) { }
 
   isAuthenticated(): boolean {
