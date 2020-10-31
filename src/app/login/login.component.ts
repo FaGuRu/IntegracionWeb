@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     const data = this.loginFormGroup.value;
-    //this.router.navigate(['dashboard'])
+     //this.router.navigate(['dashboard'])
     if(data.user && data.password){
       this._authService.login(data.user, data.password).subscribe(access => {
         localStorage.setItem('user',JSON.stringify(access));
