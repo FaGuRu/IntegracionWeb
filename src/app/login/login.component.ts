@@ -15,10 +15,12 @@ export class LoginComponent implements OnInit {
   mandar: boolean = false;
   pasa: String = '';
   loginFormGroup: FormGroup;
+  hide = true;
 
   constructor(private router: Router, private afAuth: AngularFireAuth, private _formBuilder: FormBuilder, private _authService: AuthServiceService) {
       if(_authService.isAuthenticated()){
         router.navigate(['dashboard'])
+      }else{
       }
    }
 
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user',JSON.stringify(access));
         console.log("Datos validos");
         this.router.navigate(['dashboard'])
-        
+
       }, error =>{
         console.log("Datos invalidos");
         

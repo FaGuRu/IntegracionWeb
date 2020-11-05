@@ -3,13 +3,17 @@ import {HttpClient} from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthServiceService {
   api: String = 'http://ids-bakend.herokuapp.com/';
-  constructor(private _httpClient: HttpClient) { }
+  //api: String = 'http://localhost:8000/'
+  //private REST_API_SERVER = "http://ids-bakend.herokuapp.com/api/v1/login/"
+  constructor(private _httpClient: HttpClient) {
+   }
 
   isAuthenticated(): boolean {
     let user = JSON.parse(localStorage.getItem('user'));
@@ -28,5 +32,27 @@ export class AuthServiceService {
     };
     return this._httpClient.post(`${this.api}api/v1/login/`, {username, password}, httpOptions);
   }
+
+  getUsers() : Observable<any>{
+    let usuario =JSON.parse(localStorage.getItem('user'));
+    console.log(usuario['token']);
+    
+
+    const httpOptions ={
+      headers : new HttpHeaders({
+        'Content-Type' : 'Application/json',
+        'Authorization' : `Token ${usuario['token']}`
+      })
+    }
+    
+    console.log(httpOptions.headers);
+    
+
+    return this._httpClient.get(`${this.api}api/v1/profile/userModel_url/`,httpOptions)
+  }
+
+
+
+
 
 }

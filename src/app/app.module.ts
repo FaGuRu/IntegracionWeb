@@ -5,10 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { OrderComponent } from './order/order.component';
-import { ProductComponent } from './product/product.component';
-import { ProviderComponent } from './provider/provider.component';
+import { LandingPageComponent } from './landing-page/landing-page.component'
 import { SaleComponent } from './sale/sale.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
@@ -31,15 +28,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    OrderComponent,
-    ProductComponent,
-    ProviderComponent,
     SaleComponent,
     AdminComponent,
     LoginComponent,
@@ -66,6 +60,7 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatIconModule,
     MatTableModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
