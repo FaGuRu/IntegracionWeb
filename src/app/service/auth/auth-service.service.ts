@@ -9,9 +9,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthServiceService {
-  api: String = 'http://ids-bakend.herokuapp.com/';
-  //api: String = 'http://localhost:8000/'
-  //private REST_API_SERVER = "http://ids-bakend.herokuapp.com/api/v1/login/"
+  api: String = 'https://ids-bakend.herokuapp.com/';
   constructor(private _httpClient: HttpClient) {
   }
 
