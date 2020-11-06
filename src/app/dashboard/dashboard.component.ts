@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../service/auth/auth-service.service'
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-dashboard',
