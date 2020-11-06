@@ -1,8 +1,7 @@
-
 <div class="main-div">
 
     <mat-card>
-        <form class="login-form" [formGroup]="loginFormGroup" >
+        <form class="login-form" [formGroup]="loginFormGroup">
             <mat-form-field class="example-full-width">
                 <mat-label>User</mat-label>
                 <input matInput placeholder="User" formControlName="user">
@@ -11,15 +10,18 @@
             <mat-form-field appearance="fill" class="example-full-width">
                 <mat-label>Enter your password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-              </mat-form-field>
+            </mat-form-field>
 
-            <button class="example-full-width" [disabled]="loginFormGroup.invalid" mat-raised-button color="primary" (click)="login()">Login</button>
+            <button class="example-full-width" [disabled]="loginFormGroup.invalid" mat-raised-button color="primary"
+                (click)="login()">Login</button>
             <br>
             <br>
-            <button class="example-full-width" mat-flat-button color="primary" (click)="loginGoogle()">login with Google</button>
+            <button class="example-full-width" mat-flat-button color="primary" (click)="loginGoogle()">login with
+                Google</button>
             <br>
             <br>
             <button class="example-full-width" mat-button color="Register" (click)="goRegister()">Register</button>

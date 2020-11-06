@@ -1,25 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../service/auth/auth-service.service'
 import { Router } from '@angular/router';
-
-// export interface PeriodicElement {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   symbol: string;
-// }
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-//   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-//   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-//   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-//   {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-//   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-//   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-//   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-//   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-//   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-// ];
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,25 +10,71 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  displayedColumns: string[] = ['id','fullname', 'address', 'age'];
-  //dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['id', 'fullname', 'address', 'age'];
   usuarios = [];
-  
+  addFormGroup: FormGroup;
+  editFormGroup: FormGroup;
+  deleteFormGroup: FormGroup;
 
-  constructor(private _authService: AuthServiceService,private router: Router) { 
-    if(_authService.isAuthenticated()){
+  constructor(private _authService: AuthServiceService, private router: Router, private _formBuilder: FormBuilder) {
+    if (_authService.isAuthenticated()) {
       router.navigate(['dashboard'])
-    }else{
+    } else {
       router.navigate(['login'])
     }
   }
 
   ngOnInit(): void {
-    this._authService.getUsers().subscribe((data:any[])=>{
+    this.genTable();
+    this.addFormGroup = this._formBuilder.group({
+      fullname: ['', Validators.required],
+      address: ['', Validators.required],
+      age: ['', Validators.required]
+    })
+    this.editFormGroup = this._formBuilder.group({
+      id: ['', Validators.required],
+      fullname: ['', Validators.required],
+      address: ['', Validators.required],
+      age: ['', Validators.required]
+    })
+    this.deleteFormGroup = this._formBuilder.group({
+      id: ['', Validators.required],
+    })
+    
+
+  }
+
+  post(): void {
+    const data = this.addFormGroup.value;
+    this._authService.savePost(data.fullname,data.address,data.age).subscribe((response:[])=>{
+      if(response !=null){
+        this.genTable();
+      }
+    })
+    
+    console.log("Hola");
+    
+  }
+
+  put():void{
+    const data = this.editFormGroup.value;
+    this._authService.editPut(data.id,data.fullname,data.address,data.age).subscribe((response:[])=>{
+      if(response !=null){
+        this.genTable();
+      }
+    })
+    
+  }
+
+  delete(): void{
+    const data = this.editFormGroup.value;
+  }
+
+  genTable():void{
+    this._authService.getUsers().subscribe((data: any[]) => {
       console.log(data);
-      this.usuarios=data;
+      this.usuarios = data;
     });
- 
   }
 
 }

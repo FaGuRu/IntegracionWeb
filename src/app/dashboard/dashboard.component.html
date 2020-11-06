@@ -1,37 +1,117 @@
 <app-header></app-header>
-<div class="main-div">
-    <mat-card>
+<div>
+  <mat-grid-list cols="1" rowHeight="6:1">
+    <mat-grid-tile>
+      <mat-card>
         <table mat-table [dataSource]="usuarios" class="mat-elevation-z8">
+          <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
 
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-          
-            <!-- ID Column -->
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef> id </th>
-              <td mat-cell *matCellDef="let usuario"> {{usuario.id}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="fullname">
-              <th mat-header-cell *matHeaderCellDef> fullname </th>
-              <td mat-cell *matCellDef="let usuario"> {{usuario.fullname}} </td>
-            </ng-container>
-          
-            <!-- Email Column -->
-            <ng-container matColumnDef="address">
-              <th mat-header-cell *matHeaderCellDef> address </th>
-              <td mat-cell *matCellDef="let usuario"> {{usuario.address}} </td>
-            </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> id </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.id}} </td>
+          </ng-container>
 
-            <!-- Age Column -->
-            <ng-container matColumnDef="age">
-              <th mat-header-cell *matHeaderCellDef> age </th>
-              <td mat-cell *matCellDef="let usuario"> {{usuario.age}} </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-    </mat-card>
+          <!-- Name Column -->
+          <ng-container matColumnDef="fullname">
+            <th mat-header-cell *matHeaderCellDef> fullname </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.fullname}} </td>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> address </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.address}} </td>
+          </ng-container>
+
+          <!-- Age Column -->
+          <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef> age </th>
+            <td mat-cell *matCellDef="let usuario"> {{usuario.age}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <!-- Aquí ira el formulario para agregar una persona a la tabla -->
+      <div class="add-div">
+        <mat-card>
+          <form [formGroup]="addFormGroup">
+            <label>Add Person</label>
+            <br>
+            <mat-form-field class="example-full-width">
+              <mat-label>Fullname</mat-label>
+              <input matInput placeholder="Fullname" formControlName="fullname">
+            </mat-form-field>
+
+            <mat-form-field appearance="example-full-width">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="address" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Age</mat-label>
+              <input matInput type="number" placeholder="Fullname" formControlName="age">
+            </mat-form-field>
+            <button class="example-full-width" [disabled]="addFormGroup.invalid" mat-raised-button color="primary"
+              (click)="post()">Add</button>
+          </form>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <!-- Aqui ira el formulario para eliminar una persona de la tabla -->
+      <div>
+        <mat-card>
+          <form [formGroup]="deleteFormGroup">
+            <label class="label-center">Delete Person</label>
+            <br>
+            <mat-form-field class="example-full-width">
+              <mat-label>ID User</mat-label>
+              <input matInput placeholder="Id" formControlName="id">
+            </mat-form-field>
+            <button class="example-full-width" [disabled]="deleteFormGroup.invalid" mat-raised-button
+              color="warn" (click)="delete()">Delete</button>
+          </form>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <!-- Aquí va el formulario para editar una persona -->
+      <div class="add-div">
+        <mat-card>
+          <form [formGroup]="editFormGroup">
+            <label>Edit Person</label>
+            <br>
+            <mat-form-field class="example-full-width">
+              <mat-label>ID User</mat-label>
+              <input matInput placeholder="Id" formControlName="id">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Fullname</mat-label>
+              <input matInput placeholder="Fullname" formControlName="fullname">
+            </mat-form-field>
+
+            <mat-form-field appearance="example-full-width">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="address" required>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Age</mat-label>
+              <input matInput type="number" placeholder="Age" formControlName="age">
+            </mat-form-field>
+            <button class="example-full-width" [disabled]="editFormGroup.invalid" mat-raised-button color="primary"
+              (click)="put()">Edit</button>
+          </form>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
