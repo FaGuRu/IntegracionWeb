@@ -70,7 +70,9 @@ export class AuthServiceService {
         'Authorization': `Token ${usuario['token']}`
       })
     }
-    return this._httpClient.put(`${this.api}userModel_update/<int:pk>/`, { fullname, address,age }, httpOptions);
+    console.log("este es el token= "+usuario['token']);
+    
+    return this._httpClient.put(`${this.api}api/v1/profile/userModel_update/${id}/`, { fullname, address,age }, httpOptions);
   }
 
   deleteU(id: number): Observable<any>{
@@ -81,7 +83,9 @@ export class AuthServiceService {
         'Authorization': `Token ${usuario['token']}`
       })
     }
-    return this._httpClient.delete(`${this.api}userModel_delete/<int:pk>/`, httpOptions);
+    console.log("este es el id= "+id);
+    
+    return this._httpClient.delete(`${this.api}api/v1/profile/userModel_delete/${id}/`, httpOptions);
   }
 
 

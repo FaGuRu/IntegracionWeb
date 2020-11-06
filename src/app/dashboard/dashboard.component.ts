@@ -52,8 +52,6 @@ export class DashboardComponent implements OnInit {
       }
     })
     
-    console.log("Hola");
-    
   }
 
   put():void{
@@ -67,7 +65,13 @@ export class DashboardComponent implements OnInit {
   }
 
   delete(): void{
-    const data = this.editFormGroup.value;
+    const data = this.deleteFormGroup.value;
+    this._authService.deleteU(data.id).subscribe((response:[])=>{
+      if(response !=null){
+        this.genTable();
+      }
+    })
+    
   }
 
   genTable():void{
