@@ -24,8 +24,20 @@ export class RegisterComponent implements OnInit {
 
   goLogin(){
     const data = this.registerFormGroup.value;
-    this._authService.registerUser(data.email,data.password1,data.password2,data.username)
-    this.router.navigate(['login'])
+    this._authService.registerUser(data.email,data.password1,data.password2,data.username).subscribe(access => {
+      console.log("Registro Correcto");
+      this.router.navigate(['login'])
+
+    }, error =>{
+      console.log(error);
+      if(error.status==500){
+        console.log("Registro Correcto");
+      this.router.navigate(['login'])
+      }
+
+    }
+    );
+    
     
   }
 
