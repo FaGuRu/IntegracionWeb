@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 
 export class AuthServiceService {
   api: String = 'https://ids-bakend.herokuapp.com/';
+  //api: String = 'http://localhost:8000/';
   constructor(private _httpClient: HttpClient) {
   }
 
@@ -84,6 +85,20 @@ export class AuthServiceService {
     console.log("este es el id= "+id);
     
     return this._httpClient.delete(`${this.api}api/v1/profile/userModel_delete/${id}/`, httpOptions);
+  }
+
+  registerUser(email: String, password1: String, password2: String, username: String,): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+      })
+    };
+    console.log("password 1= "+password1);
+    console.log("password 2= "+password2);
+    
+    
+    
+    return this._httpClient.post(`${this.api}rest-auth/registration/`, { email, password1,password2,username }, httpOptions);
   }
 
 

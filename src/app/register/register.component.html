@@ -9,15 +9,20 @@
 
         <mat-form-field class="example-full-width">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" formControlName="password">
+            <input matInput type="password" placeholder="Password1" formControlName="password1">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <mat-label>Username</mat-label>
-          <input matInput placeholder="Username" formControlName="usarName">
+          <mat-label> Confirm Password</mat-label>
+          <input matInput type="password" placeholder="Password2" formControlName="password2">
       </mat-form-field>
 
-        <button class="example-full-width"  mat-raised-button color="primary" (click)="goLogin()">Register</button>
+      <mat-form-field class="example-full-width">
+        <mat-label>User</mat-label>
+        <input matInput placeholder="User" formControlName="username">
+    </mat-form-field>
+
+        <button class="example-full-width" [disabled]="registerFormGroup.invalid" mat-raised-button color="primary" (click)="goLogin()">Register</button>
         <br>
         <br>
     </form>
