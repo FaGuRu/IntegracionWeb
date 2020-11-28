@@ -9,9 +9,8 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthServiceService {
-  api: String = 'https://ids-bakend.herokuapp.com/';
-  //api: String = 'http://54.221.23.97/'; Amazon Web Service (No activar aquí por es el entorno de pruebas)
-  //api: String = 'http://localhost:8000/';
+  api: String = 'http://54.221.23.97/';
+
   constructor(private _httpClient: HttpClient) {
   }
 
