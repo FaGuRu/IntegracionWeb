@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthServiceService {
-  api: String = 'http://54.221.23.97/';
+  api: String = 'http://fabricioweb.ddns.net/';
 
   constructor(private _httpClient: HttpClient) {
   }
