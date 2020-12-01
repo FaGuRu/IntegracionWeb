@@ -10,6 +10,7 @@ import { AuthServiceService } from '../service/auth/auth-service.service'
 })
 export class RegisterComponent implements OnInit {
   registerFormGroup: FormGroup;
+  mensaje_error: String='';
 
   constructor(private router: Router,private _formBuilder: FormBuilder,private _authService: AuthServiceService) { }
 
@@ -33,6 +34,15 @@ export class RegisterComponent implements OnInit {
       if(error.status==500){
         console.log("Registro Correcto");
       this.router.navigate(['login'])
+      }
+      if(error.error.email){
+        this.mensaje_error = error.error.email;
+      }else if(error.error.username){
+        this.mensaje_error = error.error.username;
+      }else if(error.error.password1){
+        this.mensaje_error = error.error.password1;
+      }else if(error.error.non_field_errors){
+        this.mensaje_error = error.error.non_field_errors;
       }
 
     }
